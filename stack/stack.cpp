@@ -63,7 +63,7 @@ public:
 
     void getTop()
     {
-        cout << "Top: " << height << endl;
+        cout << "Top: " << top->value << endl;
     }
 
     void getHeight()
