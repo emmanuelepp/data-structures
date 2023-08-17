@@ -47,6 +47,24 @@ public:
         length++;
     }
 
+    void deleteFirst()
+    {
+        if (length == 0)
+            return;
+        Node *temp = head;
+        if (length == 1)
+        {
+            head = nullptr;
+            tail = nullptr;
+        }
+        else
+        {
+            head = head->next;
+        }
+        delete temp;
+        length--;
+    };
+
     void deleteLast()
     {
         if (length == 0)
@@ -91,6 +109,32 @@ public:
         length++;
     }
 
+    Node *get(int index)
+    {
+        if (index < 0 || index >= length)
+        {
+            return nullptr;
+        }
+        Node *temp = head;
+
+        for (int i = 0; i < index; i++)
+        {
+            temp = temp->next;
+        }
+
+        return temp;
+    }
+    bool set(int index, int value)
+    {
+        Node *temp = get(index);
+        if (temp)
+        {
+            temp->value = value;
+            return true;
+        }
+
+        return false;
+    };
     void PrintList()
     {
         Node *temp = head;
@@ -127,9 +171,7 @@ int main()
     linkedList->getLength();
     linkedList->append(1);
     linkedList->append(2);
-    linkedList->PrintList();
-    linkedList->deleteLast();
-    linkedList->PrintList();
-    linkedList->prepend(9);
+
+    linkedList->set(1, 5);
     linkedList->PrintList();
 }
