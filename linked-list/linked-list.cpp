@@ -75,6 +75,22 @@ public:
         length--;
     }
 
+    void prepend(int value)
+    {
+        Node *newNode = new Node(value);
+        if (length == 0)
+        {
+            head = newNode;
+            tail = newNode;
+        }
+        else
+        {
+            newNode->next = head;
+            head = newNode;
+        }
+        length++;
+    }
+
     void PrintList()
     {
         Node *temp = head;
@@ -113,5 +129,7 @@ int main()
     linkedList->append(2);
     linkedList->PrintList();
     linkedList->deleteLast();
+    linkedList->PrintList();
+    linkedList->prepend(9);
     linkedList->PrintList();
 }
