@@ -1,3 +1,4 @@
 .vscode/
-output/
+.algorithms/
+.output/
 *.exe
