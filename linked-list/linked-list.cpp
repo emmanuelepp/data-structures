@@ -161,6 +161,23 @@ public:
         return true;
     };
 
+    void deleteNode(int index)
+    {
+        if (index < 0 || index >= length)
+            return;
+        if (index == 0)
+            return deleteFirst();
+        if (index == length - 1)
+            return deleteLast();
+
+        Node *prev = get(index - 1);
+        Node *temp = prev->next;
+
+        prev->next = temp->next;
+        delete temp;
+        length--;
+    };
+
     void PrintList()
     {
         Node *temp = head;
@@ -199,6 +216,7 @@ int main()
     linkedList->append(2);
 
     linkedList->set(1, 5);
-    linkedList->insert(9, 77);
+    linkedList->insert(1, 77);
+    linkedList->deleteNode(1);
     linkedList->PrintList();
 }
