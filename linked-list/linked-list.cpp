@@ -178,6 +178,23 @@ public:
         length--;
     };
 
+    void reverse()
+    {
+        Node *temp = head;
+        head = tail;
+        tail = temp;
+        Node *after = temp->next;
+        Node *before = nullptr;
+
+        for (int i = 0; i < length; i++)
+        {
+            after = temp->next;
+            temp->next = before;
+            before = temp;
+            temp = after;
+        }
+    };
+
     void PrintList()
     {
         Node *temp = head;
@@ -209,14 +226,5 @@ int main()
 {
     LinkedList *linkedList = new LinkedList(8);
 
-    linkedList->getHead();
-    linkedList->getTail();
-    linkedList->getLength();
-    linkedList->append(1);
-    linkedList->append(2);
-
-    linkedList->set(1, 5);
-    linkedList->insert(1, 77);
-    linkedList->deleteNode(1);
-    linkedList->PrintList();
+    // We can test here.
 }
