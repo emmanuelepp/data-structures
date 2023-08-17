@@ -31,6 +31,50 @@ public:
         length = 1;
     }
 
+    void append(int value)
+    {
+        Node *newNode = new Node(value);
+        if (length == 0)
+        {
+            head = newNode;
+            tail = newNode;
+        }
+        else
+        {
+            tail->next = newNode;
+            tail = newNode;
+        }
+        length++;
+    }
+
+    void deleteLast()
+    {
+        if (length == 0)
+            return;
+
+        Node *temp = head;
+        Node *pre = head;
+
+        if (length == 1)
+        {
+            head = nullptr;
+            tail = nullptr;
+        }
+        else
+        {
+            while (temp->next)
+            {
+                pre = temp;
+                temp = temp->next;
+            }
+            tail = pre;
+            tail->next = nullptr;
+        }
+
+        delete temp;
+        length--;
+    }
+
     void PrintList()
     {
         Node *temp = head;
@@ -65,6 +109,9 @@ int main()
     linkedList->getHead();
     linkedList->getTail();
     linkedList->getLength();
-
+    linkedList->append(1);
+    linkedList->append(2);
+    linkedList->PrintList();
+    linkedList->deleteLast();
     linkedList->PrintList();
 }
