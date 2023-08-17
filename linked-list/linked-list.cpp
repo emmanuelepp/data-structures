@@ -124,6 +124,7 @@ public:
 
         return temp;
     }
+
     bool set(int index, int value)
     {
         Node *temp = get(index);
@@ -135,6 +136,31 @@ public:
 
         return false;
     };
+
+    bool insert(int index, int value)
+    {
+        if (index < 0 || index > length)
+            return false;
+        if (index == 0)
+        {
+            prepend(value);
+            return true;
+        }
+        if (index == length)
+        {
+            append(value);
+            return true;
+        }
+
+        Node *newNode = new Node(value);
+        Node *temp = get(index - 1);
+        newNode->next = temp->next;
+        temp->next = newNode;
+        length++;
+
+        return true;
+    };
+
     void PrintList()
     {
         Node *temp = head;
@@ -173,5 +199,6 @@ int main()
     linkedList->append(2);
 
     linkedList->set(1, 5);
+    linkedList->insert(9, 77);
     linkedList->PrintList();
 }
